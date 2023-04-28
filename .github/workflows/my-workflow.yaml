@@ -15,7 +15,7 @@ jobs:
     steps:
         - uses: actions/checkout@v3
         - run: |
-            pip install pylint
+            pip install pylint matplotlib requests IPython pytest bibtexparser
             pylint ./pkg/s23finalproject
         
   pytest:
