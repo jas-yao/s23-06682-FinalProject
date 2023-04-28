@@ -17,9 +17,9 @@ class Works:
 
     def __init__(self, oaid):
         self.oaid = oaid
-        self.req = requests.get(
+        self.req = requests.get(  # pylint: disable=missing-timeout
             f"https://api.openalex.org/works/{oaid}"
-        )  # pylint: disable=missing-timeout
+        )
         self.data = self.req.json()
 
     def __str__(self):
@@ -119,9 +119,9 @@ class Works:
         if self.data["type"] == "journal-article":
             fields += ["TY  - JOUR"]
         else:
-            raise Exception(
+            raise Exception(  # pylint: disable=broad-exception-raised
                 "Unsupported type {self.data['type']}"
-            )  # pylint: disable=broad-exception-raised
+            )
 
         for author in self.data["authorships"]:
             fields += [f'AU  - {author["author"]["display_name"]}']
@@ -168,9 +168,9 @@ class Works:
         Does not account for cited_by greater than 200
         """
         citedby = []
-        res = requests.get(
+        res = requests.get(  # pylint: disable=missing-timeout
             self.data["cited_by_api_url"] + "&per-page=200"
-        ).json()  # pylint: disable=missing-timeout
+        ).json()
         for i in res["results"]:
             cbs = Works(i["id"])
             citedby += [cbs]
