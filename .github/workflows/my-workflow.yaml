@@ -1,0 +1,27 @@
+name: Testing Black, Pylint, Pytest
+on: push
+
+jobs:
+  black:
+    runs-on: ubuntu-latest
+    steps:      
+      - uses: actions/checkout@v3
+      - run: |
+          pip install black
+          black --check .
+        
+  pylint:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v3
+        - run: |
+        pip install pylint
+        pylint .
+        
+  pytest:
+    runs-on: ubuntu-latest
+    steps:      
+      - uses: actions/checkout@v3
+      - run: |
+          pip install matplotlib requests IPython pytest
+          pytest .
