@@ -1,4 +1,4 @@
-name: Testing Black, Pylint, Pytest
+name: Black, Pylint, Pytest
 on: push
 
 jobs:
