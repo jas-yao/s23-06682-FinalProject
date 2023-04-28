@@ -16,7 +16,7 @@ jobs:
         - uses: actions/checkout@v3
         - run: |
             pip install pylint
-            pylint pylint ./pkg/setup.py
+            pylint ./pkg/setup.py
         
   pytest:
     runs-on: ubuntu-latest
